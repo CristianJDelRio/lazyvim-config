@@ -21,6 +21,18 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "plugins" },
+    -- Add project.nvim configuration here
+    {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("project_nvim").setup({
+          manual_mode = true,
+          detection_methods = { "lsp", "pattern" },
+          patterns = { ".git", "Makefile", "package.json" },
+        })
+        require("telescope").load_extension("projects")
+      end,
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
