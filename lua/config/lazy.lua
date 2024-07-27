@@ -20,6 +20,9 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.test.core" },
+    { import = "lazyvim.plugins.extras.lang.python" },
     { import = "plugins" },
     -- Add project.nvim configuration here
     {
@@ -27,8 +30,8 @@ require("lazy").setup({
       config = function()
         require("project_nvim").setup({
           manual_mode = true,
-          detection_methods = { "lsp", "pattern" },
-          patterns = { ".git", "Makefile", "package.json" },
+          detection_methods = { "pattern" },
+          patterns = { ".git" },
         })
         require("telescope").load_extension("projects")
       end,
